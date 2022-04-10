@@ -1,27 +1,17 @@
-import { useEffect, useState } from "react";
-import { bindActionCreators } from "redux";
-import store from "../store";
-import actionCreators from '../store/actionCreators/counter2'
+import { useDispatch, useSelector } from "../react-redux";
+import actionCreators from "../store/actionCreators/counter2";
 
-const boundActionCreators = bindActionCreators(actionCreators, store.dispatch);
-
-const Count1 = () => {
-  const [count1, setCount1] = useState(store.getState().counterReduer2.count);
-
-  useEffect(() => {
-    const res = store.subscribe(() => {
-      setCount1(store.getState().counterReduer2.count);
-    });
-    return () => res();
-  }, []);
+const Count2 = (props) => {
+  const state = useSelector((state) => state.counterReduer2);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <button onClick={boundActionCreators.minus}>-</button>
-      <p>{count1}</p>
-      <button onClick={boundActionCreators.add}>+</button>
+      <button onClick={() => dispatch(actionCreators.minus())}>-</button>
+      <p>{state.count}</p>
+      <button onClick={() => dispatch(actionCreators.add())}>+</button>
     </div>
   );
 };
 
-export default Count1;
+export default Count2;
