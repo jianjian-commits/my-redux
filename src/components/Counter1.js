@@ -10,6 +10,7 @@ const Count1 = (props) => {
       <button onClick={() => dispatch(actionCreators.minus())}>-</button>
       <p>{state.count}</p>
       <button onClick={() => dispatch(actionCreators.add())}>+</button>
+      <button onClick={() => dispatch(actionCreators.thunkAdd())}>addThunk</button>
     </div>
   );
 };
