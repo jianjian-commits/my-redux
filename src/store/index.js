@@ -12,7 +12,10 @@ const rootReducer = combineReducers({
 
 // const store = createStore(rootReducer)
 // const store = applyMiddleware(logger)(createStore)(rootReducer)
-const store = applyMiddleware(thunk)(createStore)(rootReducer)
+// const store = applyMiddleware(thunk)(createStore)(rootReducer)
+
+// 使用多个中间件
+const store = applyMiddleware(logger, thunk)(createStore)(rootReducer)
 
 
 // let dispatch = store.dispatch
